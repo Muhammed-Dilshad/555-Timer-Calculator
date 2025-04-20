@@ -8,23 +8,11 @@
   </head>
 
   <body>
-<a href="https://github.com/Muhammed-Dilshad" target="_blank">
-  <div id="logo"></div>
-</a>
+    <a href="https://github.com/Muhammed-Dilshad" target="_blank">
+      <div id="logo"></div>
+    </a>
 
-    
     <form id="myForm">
-      <span>
-        <label for="frequency" for="frequencyUnit">Frequency:</label>
-        <input type="number" id="frequency" name="frequency" />
-        <select id="frequencyUnit" name="frequencyUnit">
-          <option value="Hz">Hz</option>
-          <option value="mHz">mHz</option>
-          <option value="kHz">kHz</option>
-          <option value="MHz">MHz</option>
-        </select>
-      </span>
-      <br /><br />
       <span>
         <label for="options">Mode of operation:</label>
         <select id="options" name="options">
@@ -32,6 +20,17 @@
           <option value="1">Astable</option>
           <option value="2">Bistable</option>
           <option value="3">Monostable</option>
+        </select>
+      </span>
+      <br /><br />
+      <span id="frequencyWrapper">
+        <label for="frequency" for="frequencyUnit">Frequency:</label>
+        <input type="number" id="frequency" name="frequency" />
+        <select id="frequencyUnit" name="frequencyUnit">
+          <option value="Hz">Hz</option>
+          <option value="mHz">mHz</option>
+          <option value="kHz">kHz</option>
+          <option value="MHz">MHz</option>
         </select>
       </span>
       <br /><br />
@@ -46,7 +45,7 @@
       <br /><br />
       <button type="submit">Submit</button>
     </form>
-    <div id="popup" style="display:none">
+    <div id="popup" style="display: none">
       <div id="img"></div>
       <div id="data"></div>
       <button onclick="hide()">Close</button>
