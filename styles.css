@@ -137,5 +137,9 @@ footer {
   position: absolute;
   bottom: 0;
   font-size: 14px;
-    z-index: 2;
+  z-index: 2;
+}
+
+.inactive {
+  opacity: 0.5;
 }
