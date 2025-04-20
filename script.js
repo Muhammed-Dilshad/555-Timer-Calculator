@@ -11,7 +11,7 @@ document.getElementById("myForm").addEventListener("submit", function (e) {
   const imgDiv = document.getElementById("img");
   const dataDiv = document.getElementById("data");
 
-  if (!frequencyInput || mode === "0" || !amplitude) {
+  if ((mode !== "2" && !frequencyInput) || mode === "0" || !amplitude) {
     alert("Please fill all the required fields correctly.");
     return;
   }
@@ -108,7 +108,7 @@ function showIntroDialog() {
   introDialog.innerHTML = `
     <h2>Welcome!</h2>
     <p>This site is part of my Web Development journey.<br />
-       It helps you design 555 timer circuits based on mode and frequency.</p>
+      It helps you design 555 timer circuits based on mode and frequency.</p>
     <button id="closeIntro" style="margin-top: 15px; padding: 8px 16px; border: none; background-color: #007BFF; color: white; border-radius: 5px; cursor: pointer;">Got it!</button>
   `;
 
@@ -133,4 +133,42 @@ function showIntroDialog() {
 
 window.addEventListener("DOMContentLoaded", () => {
   showIntroDialog();
+
+  const modeSelect = document.getElementById("options");
+  const frequency = document.getElementById("frequency");
+  const frequencyUnit = document.getElementById("frequencyUnit");
+  const frequencyWrapper = document.getElementById("frequencyWrapper");
+
+  modeSelect.addEventListener("change", function () {
+    const isBistable = modeSelect.value === "2";
+
+    if (isBistable) {
+      frequency.value = "";
+      frequencyUnit.selectedIndex = 0;
+
+      frequencyWrapper.classList.add("inactive");
+    } else {
+      frequencyWrapper.classList.remove("inactive");
+    }
+  });
+
+  function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
+
+  // Attach listener to wrapper instead of disabled inputs
+  frequencyWrapper.addEventListener("mousedown", function (e) {
+    if (modeSelect.value === "2") {
+      showToast("Frequency is not required in Bistable mode.");
+      console.log("Frequency is not required in Bistable mode.");
+      e.preventDefault();
+    }
+  });
 });
